@@ -1,0 +1,30 @@
+"""we can access static variables using the Class name itself.
+Static variable belong to the class and not an object.
+we don’t need self to access static variables.
+adding a double underscore in front of static variable makes it private variable."""
+
+class Mobile:
+    discount = 50
+    def __init__(self, price, brand):
+        self.price = price
+        self.brand = brand
+
+    def purchase(self):
+        total = self.price - self.price * Mobile.discount / 100
+        print (self.brand, "mobile with price", self.price, "is available after discount at", total)
+
+def enable_discount():
+    Mobile.discount = 50
+
+def disable_discount():
+    Mobile.discount = 0
+
+mob1=Mobile(20000, "Apple")
+mob2=Mobile(30000, "Apple")
+mob3=Mobile(5000, "Samsung")
+
+enable_discount()
+mob1.purchase()
+mob2.purchase()
+disable_discount()
+mob3.purchase()
